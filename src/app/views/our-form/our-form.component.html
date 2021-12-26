@@ -1,0 +1,157 @@
+<p>our-form works!</p>
+
+
+<form class="container p-3 bg-warning" [formGroup]="contactForm" (ngSubmit)="onSubmit(contactForm.value)">
+    <input
+      type="text"
+      class="form-control mt-4"
+      placeholder="first name"
+      name="firstname"
+      formControlName="firstName"
+      (change)="logContactFrom()"
+    />
+  
+  
+  
+    
+  
+  
+  
+  
+    <div class="error d-flex justify-content-center" *ngIf="contactFormValues['firstName'].touched && contactFormValues['firstName'].invalid">
+  
+  
+      <div *ngIf="contactFormValues['firstName'].errors?.['required']">
+          first name is required
+      </div>
+      <div *ngIf="contactFormValues['firstName'].errors?.['minlength']">
+          first name's minlength is {{contactFormValues['firstName'].errors?.['minlength'].requiredLength}}
+      </div>
+  
+  
+    </div>
+  
+  
+  
+  
+  
+  
+  
+    <input
+      type="text"
+      class="form-control mt-4"
+      placeholder="last name"
+      name="lastname"
+      formControlName="lastName"
+      (change)="logContactFrom()"
+    />
+  
+  
+  
+    <div class="error d-flex justify-content-center" *ngIf="contactFormValues['lastName'].touched && contactFormValues['lastName'].invalid">
+  
+  
+      <div *ngIf="contactFormValues['lastName'].errors?.['required']">
+          last name is required
+      </div>
+      <div *ngIf="contactFormValues['lastName'].errors?.['minlength']">
+          last name's minlength is {{contactFormValues['lastName'].errors?.['minlength'].requiredLength}}
+      </div>
+  
+  
+    </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    
+  
+    <input
+      type="text"
+      class="form-control mt-4"
+      placeholder="email"
+      name="email"
+      formControlName="email"
+      (change)="logContactFrom()"
+    />
+  
+  
+  
+  
+  
+  
+    <div class="error d-flex justify-content-center" *ngIf="contactFormValues['email'].touched && contactFormValues['email'].invalid">
+  
+  
+      
+      <div *ngIf="contactFormValues['email'].errors?.['required']">
+          email name is required
+      </div>
+      <div *ngIf="contactFormValues['email'].errors?.['email']">
+          email is invalid
+      </div>
+      
+  
+  
+    </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    <div class="py-3"></div>
+  
+    <input type="radio" name="gender" id="male" value="male" formControlName="gender" />
+    <label class="mx-2" for="male">male</label>
+  
+    <div class="py-2"></div>
+  
+    <input type="radio" name="gender" id="female" value="female" formControlName="gender" />
+    <label class="mx-2" for="female">female</label>
+  
+    <div class="py-2"></div>
+  
+    <input type="checkbox" name="isMarried"/>
+    <label class="mx-2">is married</label>
+  
+    <div class="py-2"></div>
+  
+  <!--   formControlName="country" (change)="logContactFrom()"   -->
+  
+    <select name="country" formControlName="country">
+      <option selected disabled>choose your country</option>
+      <option *ngFor="let i of countriesArray">{{ i.name }}</option>
+    </select>
+  
+    
+    <div class="error d-flex justify-content-center" *ngIf="contactFormValues['country'].touched && contactFormValues['country'].invalid">
+  
+  
+      
+      <div *ngIf="contactFormValues['country'].errors?.['required']">
+          country name is required
+      </div>
+      
+  
+  
+    </div>
+  
+    <div class="py-3"></div>
+  
+    <button class="btn btn-primary" type="submit" [disabled]="contactForm.invalid">Submit</button>
+  </form>

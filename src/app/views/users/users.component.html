@@ -1,0 +1,25 @@
+<p>users works!</p>
+
+<table class="table">
+    <thead>
+        <th>username</th>
+        <th>city</th>
+        <th>lat</th>
+        <th>long</th>
+        <th>company</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let i of users">
+            <td>{{i.username}}</td>
+            <td>{{i.address.city}}</td>
+            <td>{{i.address.geo.lat}}</td>
+            <td>{{i.address.geo.lng}}</td>
+            <td>{{i.company.name}}</td>
+            <td>
+                <a routerLink="singleUser/{{i.id}}">
+                    <button class="btn btn-primary">visit</button>
+                </a>
+            </td>
+        </tr>
+    </tbody>
+</table>
